@@ -31,7 +31,7 @@ int find_simd(int n, int *a, int needle) {
   __m256i bneedle = _mm256_set1_epi32(needle);
   
   int i = 0;
-  for (; i < n; i += 8) {
+  for (; i + 7 < n; i += 8) {
     __m256i hspart = _mm256_loadu_si256((__m256i*)(a + i));
     
     #ifdef DEBUG
